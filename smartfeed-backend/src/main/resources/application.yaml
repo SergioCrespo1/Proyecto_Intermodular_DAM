@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: smartfeed-backend
+
+  # Habilitación de Virtual Threads (Java 21 - Project Loom)
+  threads:
+    virtual:
+      enabled: true
+
+  # Conexión a la base de datos MySQL 8.0 / 8.4
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/smartfeed_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:smartfeed_user}
+    password: ${DB_PASSWORD:smartfeed_pass}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+      max-lifetime: 1200000
+
+  # Configuración JPA / Hibernate 6
+  jpa:
+    open-in-view: false
+    hibernate:
+      # Validamos que las entidades coincidan con las tablas físicas sin modificarlas
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
