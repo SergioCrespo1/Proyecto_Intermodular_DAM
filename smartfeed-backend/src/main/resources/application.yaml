@@ -29,6 +29,9 @@ spring:
     hibernate:
       # Validamos que las entidades coincidan con las tablas físicas sin modificarlas
       ddl-auto: validate
+      # RM - He añadido estas dos lineas para que MySQL en Docker respete los nombres de tabla en MAYUS
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
     properties:
       hibernate:
