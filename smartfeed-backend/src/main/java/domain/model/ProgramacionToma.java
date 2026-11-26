@@ -26,10 +26,10 @@ public class ProgramacionToma {
     @Column(name = "id_programacion")
     private Integer idProgramacion;
 
-    // Clave foránea temporalmente desacoplada de LotePeces
     @NotNull
-    @Column(name = "id_lote_peces", nullable = false)
-    private Integer idLotePeces;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_lote_peces", nullable = false)
+    private LotePeces lotePeces;
 
     @NotNull
     @Column(name = "fecha_programada", nullable = false)
@@ -80,9 +80,9 @@ public class ProgramacionToma {
     @Column(name = "estado_orden", nullable = false, length = 20)
     private EstadoOrden estadoOrden = EstadoOrden.PENDIENTE;
 
-    // Constructor de conveniencia para instanciar la orden calculada desde el servicio
+    // Constructor de conveniencia adaptado con el objeto LotePeces real
     public ProgramacionToma(
-            Integer idLotePeces,
+            LotePeces lotePeces,
             LocalDate fechaProgramada,
             Integer numeroToma,
             Integer totalTomasDia,
@@ -93,7 +93,7 @@ public class ProgramacionToma {
             BigDecimal racionTeoricaKg,
             BigDecimal sacosProgramados) {
 
-        this.idLotePeces = idLotePeces;
+        this.lotePeces = lotePeces;
         this.fechaProgramada = fechaProgramada;
         this.numeroToma = numeroToma;
         this.totalTomasDia = totalTomasDia;
