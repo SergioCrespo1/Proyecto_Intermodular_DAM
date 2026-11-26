@@ -54,7 +54,8 @@ public class Pienso {
     private BigDecimal pesoSacoKg = new BigDecimal("25.0");
 
     @NotNull
-    @Column(name = "es medicado", nullable = false)
+        // RM - Error corregido: ponia "es medicado" en lugar de "es_medicado"
+    @Column(name = "es_medicado", nullable = false)
     private Boolean esMedicado = false;
 
     @Column(name = "medicamento_activo", length = 100)
