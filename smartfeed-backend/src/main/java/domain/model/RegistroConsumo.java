@@ -54,7 +54,8 @@ public class RegistroConsumo {
     @Min(1)
     @Max(4)
     @Column(name = "respuesta_alimentaria", nullable = false)
-    private Integer respuestaAlimentaria;
+    // RM - Cambiado de Integer a Byte para coincidir con el tipo TINYINT de schema.sql en la validación de Hibernate
+    private Byte respuestaAlimentaria;
 
     @NotNull
     @Column(name = "id_usuario", nullable = false)
