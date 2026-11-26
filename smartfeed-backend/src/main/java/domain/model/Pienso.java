@@ -36,7 +36,7 @@ public class Pienso {
     @NotNull
     @DecimalMin(value = "0,1")
     @Column(name = "tamano_pellet_mm", nullable = false, precision = 3, scale = 1)
-    private BigDecimal tamañoPelletMn;
+    private BigDecimal tamanoPelletMm;
 
     @NotNull
     @DecimalMin(value = "0,0")
@@ -54,7 +54,7 @@ public class Pienso {
     private BigDecimal pesoSacoKg = new BigDecimal("25.0");
 
     @NotNull
-    @Column(name = "es medicado", nullable = false)
+    @Column(name = "es_medicado", nullable = false)
     private Boolean esMedicado = false;
 
     @Column(name = "medicamento_activo", length = 100)
